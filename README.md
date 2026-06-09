@@ -52,10 +52,28 @@ O servidor legado sobe na porta `55555`:
 http://localhost:55555
 ```
 
+## Execução com Docker
+
+Build da imagem de desenvolvimento:
+
+```bash
+docker build -t gces-projeto-individual:dev .
+```
+
+Execução do container com hot reload:
+
+```bash
+docker run --rm -it \
+  -p 55555:55555 \
+  -v "$PWD/game:/app/game" \
+  -v "$PWD/server:/app/server" \
+  -v /app/server/node_modules \
+  gces-projeto-individual:dev
+```
+
 ## Observações para os próximos commits
 
 - As dependências atuais do servidor são antigas (`express@3.x` e `socket.io@0.9.x`) e devem ser modernizadas em commit próprio.
 - A persistência em Postgres ainda não foi implementada.
-- Não há Dockerfile, Compose, GitHub Actions, testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
+- Não há Docker Compose, GitHub Actions, testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.
-
