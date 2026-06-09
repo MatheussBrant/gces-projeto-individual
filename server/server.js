@@ -2,14 +2,28 @@ var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
+    db = require('./db.js'),
     GameCollection = require('./games.js').GameCollection,
-    games = new GameCollection();
+    games = new GameCollection({
+      onGameEnded: function (gameName, playerOut) {
+        db.saveFightEvent(gameName, 'ended', {
+          disconnectedPlayer: playerOut
+        });
+      }
+    });
 
 app.configure(function () {
   app.use(express.static(__dirname + '/../game'));
 });
 
-server.listen(55555);
+db.init(function (err) {
+  if (err) {
+    console.error('Could not initialize database:', err.message);
+    process.exit(1);
+  }
+
+  server.listen(55555);
+});
 
 var Responses = {
     SUCCESS: 0,
@@ -26,6 +40,9 @@ io.sockets.on('connection', function (socket) {
   socket.on(Requests.CREATE_GAME, function (gameName) {
     if (games.createGame(gameName)) {
       games.getGame(gameName).addPlayer(socket);
+      db.saveFightEvent(gameName, 'created', {
+        players: 1
+      });
       socket.emit('response', Responses.SUCCESS);
     } else {
       socket.emit('response', Responses.GAME_EXISTS);
@@ -37,6 +54,9 @@ io.sockets.on('connection', function (socket) {
       socket.emit('response', Responses.GAME_NOT_EXISTS);
     } else {
       if (game.addPlayer(socket)) {
+        db.saveFightEvent(gameName, 'joined', {
+          players: 2
+        });
         socket.emit('response', Responses.SUCCESS);
       } else {
         socket.emit('response', Responses.GAME_FULL);

@@ -71,9 +71,37 @@ docker run --rm -it \
   gces-projeto-individual:dev
 ```
 
+## Execução com Docker Compose
+
+Subir a aplicação com Postgres:
+
+```bash
+docker compose up --build
+```
+
+A aplicação ficará disponível em:
+
+```text
+http://localhost:55555
+```
+
+O Compose cria um banco Postgres e a aplicação registra eventos simples de partidas na tabela `fight_events`.
+
+Para encerrar e remover os containers:
+
+```bash
+docker compose down
+```
+
+Para remover também os dados persistidos no volume local:
+
+```bash
+docker compose down -v
+```
+
 ## Observações para os próximos commits
 
 - As dependências atuais do servidor são antigas (`express@3.x` e `socket.io@0.9.x`) e devem ser modernizadas em commit próprio.
-- A persistência em Postgres ainda não foi implementada.
-- Não há Docker Compose, GitHub Actions, testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
+- A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
+- Não há GitHub Actions, testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.

@@ -8,6 +8,8 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Estrutura preservada em `game/` e `server/`.
 - Runtime alvo definido como Node.js 22.
 - Arquivos de configuração neutros adicionados: `.editorconfig`, `.gitattributes`, `.gitignore`, `.nvmrc` e `package.json` raiz.
+- Docker Compose de desenvolvimento integrado com Postgres.
+- Persistência simples de eventos de partidas na tabela `fight_events`.
 
 ## Fases futuras sugeridas
 
@@ -25,7 +27,5 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 ## Pontos técnicos mapeados
 
 - `server/package.json` usa `express@3.x` e `socket.io@0.9.x`, que devem ser modernizados em fase própria.
-- `server/games.js` tem um defeito em `createGame`: a variável `game` é usada antes de ser criada.
 - `game/index.html` carrega `/socket.io/socket.io.js`, então o modo de rede depende do servidor Node.
 - O frontend é JavaScript legado sem bundler; qualquer introdução de lint/test deve considerar esse formato.
-

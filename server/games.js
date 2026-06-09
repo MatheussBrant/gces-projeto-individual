@@ -66,10 +66,13 @@ Game.prototype.endGame = function (playerOut) {
   this._players = [];
   opponent.disconnect();
   this._gameCollection.removeGame(this._id);
+  this._gameCollection.gameEnded(this._id, playerOut);
 };
 
-function GameCollection() {
+function GameCollection(options) {
   this._games = {};
+  options = options || {};
+  this._onGameEnded = options.onGameEnded;
 }
 
 GameCollection.prototype.getGame = function (game) {
@@ -77,7 +80,7 @@ GameCollection.prototype.getGame = function (game) {
 };
 
 GameCollection.prototype.createGame = function (id) {
-  if (this._games[game]) {
+  if (this._games[id]) {
     return false;
   }
   var game = new Game(id, this);
@@ -91,6 +94,12 @@ GameCollection.prototype.removeGame = function (id) {
     return true;
   }
   return false;
+};
+
+GameCollection.prototype.gameEnded = function (id, playerOut) {
+  if (typeof this._onGameEnded === 'function') {
+    this._onGameEnded(id, playerOut);
+  }
 };
 
 exports.GameCollection = GameCollection;
