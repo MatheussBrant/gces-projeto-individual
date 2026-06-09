@@ -4,12 +4,18 @@
   "private": true,
   "description": "Projeto individual de GCES baseado no mk.js.",
   "scripts": {
+    "build": "node --check server/server.js && node --check server/games.js && node --check server/db.js",
     "dev": "npm --prefix server run dev",
+    "lint": "eslint \"server/**/*.js\" \"game/src/**/*.js\"",
+    "lint:game": "eslint \"game/src/**/*.js\"",
+    "lint:server": "eslint \"server/**/*.js\"",
     "start": "npm --prefix server start",
     "install:server": "npm --prefix server install"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2"
   },
   "engines": {
     "node": ">=22"
   }
 }
-

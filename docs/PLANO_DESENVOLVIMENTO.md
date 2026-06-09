@@ -10,6 +10,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Arquivos de configuração neutros adicionados: `.editorconfig`, `.gitattributes`, `.gitignore`, `.nvmrc` e `package.json` raiz.
 - Docker Compose de desenvolvimento integrado com Postgres.
 - Persistência simples de eventos de partidas na tabela `fight_events`.
+- CI de build e lint configurada com GitHub Actions.
 
 ## Fases futuras sugeridas
 
@@ -28,4 +29,4 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 
 - `server/package.json` usa `express@3.x` e `socket.io@0.9.x`, que devem ser modernizados em fase própria.
 - `game/index.html` carrega `/socket.io/socket.io.js`, então o modo de rede depende do servidor Node.
-- O frontend é JavaScript legado sem bundler; qualquer introdução de lint/test deve considerar esse formato.
+- O frontend é JavaScript legado sem bundler; testes futuros devem considerar esse formato.

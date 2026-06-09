@@ -99,9 +99,25 @@ Para remover também os dados persistidos no volume local:
 docker compose down -v
 ```
 
+## Qualidade e CI
+
+Rodar validação de build local:
+
+```bash
+npm run build
+```
+
+Rodar lint do frontend e backend:
+
+```bash
+npm run lint
+```
+
+O workflow `.github/workflows/ci.yml` executa instalação das dependências, build e lint em pushes e pull requests para `main`.
+
 ## Observações para os próximos commits
 
 - As dependências atuais do servidor são antigas (`express@3.x` e `socket.io@0.9.x`) e devem ser modernizadas em commit próprio.
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
-- Não há GitHub Actions, testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
+- Não há testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.
