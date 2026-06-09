@@ -1,0 +1,15 @@
+{
+  "name": "gces-projeto-individual",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Projeto individual de GCES baseado no mk.js.",
+  "scripts": {
+    "dev": "npm --prefix server run dev",
+    "start": "npm --prefix server start",
+    "install:server": "npm --prefix server install"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
+
