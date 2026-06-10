@@ -113,6 +113,18 @@ Execução da imagem de produção:
 docker run --rm -p 55555:55555 gces-projeto-individual:prod
 ```
 
+Build da imagem Nginx para arquivos estáticos:
+
+```bash
+docker build -f Dockerfile.nginx -t gces-projeto-individual-static:prod .
+```
+
+Execução da imagem Nginx:
+
+```bash
+docker run --rm -p 8080:80 gces-projeto-individual-static:prod
+```
+
 ## Qualidade e CI
 
 Rodar validação de build local:
@@ -172,5 +184,6 @@ A análise de qualidade e cobertura do SonarCloud usa `sonar-project.properties`
 - As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
 - A imagem de produção do servidor usa build multi-stage com base Alpine.
+- A imagem Nginx de produção serve os arquivos estáticos do frontend.
 - Não há manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.
