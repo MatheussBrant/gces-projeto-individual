@@ -1,7 +1,7 @@
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
-    io = require('socket.io').listen(server),
+    io = require('socket.io')(server),
     db = require('./db.js'),
     GameCollection = require('./games.js').GameCollection,
     games = new GameCollection({
@@ -12,9 +12,7 @@ var express = require('express'),
       }
     });
 
-app.configure(function () {
-  app.use(express.static(__dirname + '/../game'));
-});
+app.use(express.static(__dirname + '/../game'));
 
 db.init(function (err) {
   if (err) {
@@ -36,7 +34,7 @@ var Responses = {
     JOIN_GAME: 'join-game'
   };
 
-io.sockets.on('connection', function (socket) {
+io.on('connection', function (socket) {
   socket.on(Requests.CREATE_GAME, function (gameName) {
     if (games.createGame(gameName)) {
       games.getGame(gameName).addPlayer(socket);

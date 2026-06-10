@@ -135,7 +135,7 @@ O workflow `.github/workflows/ci.yml` executa instalação das dependências, bu
 
 ## Observações para os próximos commits
 
-- As dependências atuais do servidor são antigas (`express@3.x` e `socket.io@0.9.x`) e devem ser modernizadas em commit próprio.
+- As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
 - Não há testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.

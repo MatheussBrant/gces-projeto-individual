@@ -29,6 +29,6 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 
 ## Pontos técnicos mapeados
 
-- `server/package.json` usa `express@3.x` e `socket.io@0.9.x`, que devem ser modernizados em fase própria.
+- `server/package.json` usa versões atuais de Express, Socket.IO e pg.
 - `game/index.html` carrega `/socket.io/socket.io.js`, então o modo de rede depende do servidor Node.
 - O frontend é JavaScript legado sem bundler; testes futuros devem considerar esse formato.
