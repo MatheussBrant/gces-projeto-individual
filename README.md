@@ -141,6 +141,8 @@ O workflow `.github/workflows/ci.yml` executa instalação das dependências, au
 
 O workflow `.github/workflows/codeql.yml` executa análise estática de segurança com CodeQL em pushes, pull requests e semanalmente.
 
+Detalhes das verificações de segurança estão em `docs/SEGURANCA.md`.
+
 ## Observações para os próximos commits
 
 - As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.

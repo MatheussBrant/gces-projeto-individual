@@ -15,6 +15,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Testes de fuzzing adicionados ao workflow para entradas inesperadas do servidor.
 - Auditoria npm adicionada ao workflow para SCA.
 - CodeQL adicionado ao GitHub Actions para SAST.
+- Verificações de segurança documentadas em `docs/SEGURANCA.md`.
 
 ## Fases futuras sugeridas
 
