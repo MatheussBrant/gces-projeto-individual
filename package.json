@@ -4,6 +4,9 @@
   "private": true,
   "description": "Projeto individual de GCES baseado no mk.js.",
   "scripts": {
+    "audit": "npm run audit:root && npm run audit:server",
+    "audit:root": "npm audit --audit-level=high",
+    "audit:server": "npm audit --prefix server --audit-level=high",
     "build": "node --check server/server.js && node --check server/games.js && node --check server/db.js",
     "dev": "npm --prefix server run dev",
     "lint": "eslint \"server/**/*.js\" \"game/src/**/*.js\"",

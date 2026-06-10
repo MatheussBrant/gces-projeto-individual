@@ -131,7 +131,13 @@ Rodar todos os testes:
 npm test
 ```
 
-O workflow `.github/workflows/ci.yml` executa instalação das dependências, build, lint, testes unitários e testes de fuzzing em pushes e pull requests para `main`.
+Rodar auditoria de dependências:
+
+```bash
+npm run audit
+```
+
+O workflow `.github/workflows/ci.yml` executa instalação das dependências, auditoria npm, build, lint, testes unitários e testes de fuzzing em pushes e pull requests para `main`.
 
 ## Observações para os próximos commits
 

@@ -28,6 +28,12 @@ jobs:
       - name: Install server dependencies
         run: npm ci --prefix server
 
+      - name: Audit root dependencies
+        run: npm run audit:root
+
+      - name: Audit server dependencies
+        run: npm run audit:server
+
       - name: Build
         run: npm run build
 
