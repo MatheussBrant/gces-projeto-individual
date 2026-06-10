@@ -151,9 +151,11 @@ O workflow `.github/workflows/codeql.yml` executa análise estática de seguran�
 
 Detalhes das verificações de segurança estão em `docs/SEGURANCA.md`.
 
+A análise de qualidade e cobertura do SonarCloud usa `sonar-project.properties` e requer o secret `SONAR_TOKEN` configurado no GitHub.
+
 ## Observações para os próximos commits
 
 - As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
-- Não há Sonar ou manifestos de infraestrutura neste ponto inicial.
+- Não há manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.

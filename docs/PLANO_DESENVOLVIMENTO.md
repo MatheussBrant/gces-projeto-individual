@@ -17,6 +17,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - CodeQL adicionado ao GitHub Actions para SAST.
 - Verificações de segurança documentadas em `docs/SEGURANCA.md`.
 - Relatório de cobertura LCOV configurado em `coverage/lcov.info`.
+- SonarCloud integrado ao workflow de CI usando `sonar-project.properties`.
 
 ## Fases futuras sugeridas
 
