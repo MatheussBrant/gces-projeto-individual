@@ -125,6 +125,22 @@ Execução da imagem Nginx:
 docker run --rm -p 8080:80 gces-projeto-individual-static:prod
 ```
 
+## Kubernetes
+
+Aplicar os manifests:
+
+```bash
+kubectl apply -k k8s
+```
+
+Remover os recursos:
+
+```bash
+kubectl delete -k k8s
+```
+
+Os manifests esperam imagens publicadas no GHCR. A publicação das imagens será configurada no pipeline em etapa própria.
+
 ## Qualidade e CI
 
 Rodar validação de build local:
@@ -185,5 +201,5 @@ A análise de qualidade e cobertura do SonarCloud usa `sonar-project.properties`
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
 - A imagem de produção do servidor usa build multi-stage com base Alpine.
 - A imagem Nginx de produção serve os arquivos estáticos do frontend.
-- Não há manifestos de infraestrutura neste ponto inicial.
+- Os manifests Kubernetes ficam em `k8s/`.
 - Os commits das fases devem ser atômicos e espaçados no tempo.

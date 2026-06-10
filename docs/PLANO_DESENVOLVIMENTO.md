@@ -20,6 +20,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - SonarCloud integrado ao workflow de CI usando `sonar-project.properties`.
 - Dockerfile de produção multi-stage com base Alpine adicionado para o servidor Node.
 - Imagem Nginx adicionada para servir arquivos estáticos do frontend em produção.
+- Manifests Kubernetes adicionados para frontend, backend e Postgres.
 
 ## Fases futuras sugeridas
 

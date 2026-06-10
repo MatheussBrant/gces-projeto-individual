@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: gces-projeto-individual
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 55555
+      targetPort: 55555
+  selector:
+    app: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: gces-projeto-individual
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/matheussbrant/gces-projeto-individual-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 55555
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mkjs-secrets
+                  key: DATABASE_URL
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 55555
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 55555
+            initialDelaySeconds: 30
+            periodSeconds: 30
+
