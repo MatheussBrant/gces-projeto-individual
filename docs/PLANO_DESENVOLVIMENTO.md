@@ -11,6 +11,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Docker Compose de desenvolvimento integrado com Postgres.
 - Persistência simples de eventos de partidas na tabela `fight_events`.
 - CI de build e lint configurada com GitHub Actions.
+- Teste unitário inicial adicionado ao workflow para demonstrar falha antes da correção.
 
 ## Fases futuras sugeridas
 

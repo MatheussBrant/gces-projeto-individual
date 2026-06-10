@@ -113,7 +113,13 @@ Rodar lint do frontend e backend:
 npm run lint
 ```
 
-O workflow `.github/workflows/ci.yml` executa instalação das dependências, build e lint em pushes e pull requests para `main`.
+Rodar testes unitários:
+
+```bash
+npm test
+```
+
+O workflow `.github/workflows/ci.yml` executa instalação das dependências, build, lint e testes unitários em pushes e pull requests para `main`.
 
 ## Observações para os próximos commits
 
