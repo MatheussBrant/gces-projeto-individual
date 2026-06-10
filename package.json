@@ -9,7 +9,9 @@
     "lint": "eslint \"server/**/*.js\" \"game/src/**/*.js\"",
     "lint:game": "eslint \"game/src/**/*.js\"",
     "lint:server": "eslint \"server/**/*.js\"",
-    "test": "node --test \"test/**/*.test.js\"",
+    "test": "npm run test:unit && npm run test:fuzz",
+    "test:fuzz": "node --test \"test/fuzz/**/*.test.js\"",
+    "test:unit": "node --test \"test/*.test.js\"",
     "start": "npm --prefix server start",
     "install:server": "npm --prefix server install"
   },

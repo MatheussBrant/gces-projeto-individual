@@ -12,6 +12,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Persistência simples de eventos de partidas na tabela `fight_events`.
 - CI de build e lint configurada com GitHub Actions.
 - Teste unitário inicial adicionado ao workflow para demonstrar falha antes da correção.
+- Testes de fuzzing adicionados ao workflow para entradas inesperadas do servidor.
 
 ## Fases futuras sugeridas
 
