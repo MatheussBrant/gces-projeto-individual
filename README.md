@@ -139,9 +139,11 @@ npm run audit
 
 O workflow `.github/workflows/ci.yml` executa instalação das dependências, auditoria npm, build, lint, testes unitários e testes de fuzzing em pushes e pull requests para `main`.
 
+O workflow `.github/workflows/codeql.yml` executa análise estática de segurança com CodeQL em pushes, pull requests e semanalmente.
+
 ## Observações para os próximos commits
 
 - As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
-- Não há testes, Sonar ou manifestos de infraestrutura neste ponto inicial.
+- Não há Sonar ou manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.

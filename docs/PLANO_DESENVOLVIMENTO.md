@@ -14,6 +14,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Teste unitário inicial adicionado ao workflow para demonstrar falha antes da correção.
 - Testes de fuzzing adicionados ao workflow para entradas inesperadas do servidor.
 - Auditoria npm adicionada ao workflow para SCA.
+- CodeQL adicionado ao GitHub Actions para SAST.
 
 ## Fases futuras sugeridas
 
