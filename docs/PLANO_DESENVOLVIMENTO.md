@@ -16,6 +16,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Auditoria npm adicionada ao workflow para SCA.
 - CodeQL adicionado ao GitHub Actions para SAST.
 - Verificações de segurança documentadas em `docs/SEGURANCA.md`.
+- Relatório de cobertura LCOV configurado em `coverage/lcov.info`.
 
 ## Fases futuras sugeridas
 

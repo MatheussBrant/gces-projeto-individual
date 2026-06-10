@@ -45,3 +45,6 @@ jobs:
 
       - name: Fuzz tests
         run: npm run test:fuzz
+
+      - name: Coverage
+        run: npm run coverage

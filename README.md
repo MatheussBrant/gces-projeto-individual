@@ -131,13 +131,21 @@ Rodar todos os testes:
 npm test
 ```
 
+Gerar relatório de cobertura:
+
+```bash
+npm run coverage
+```
+
+O relatório LCOV é gerado em `coverage/lcov.info`.
+
 Rodar auditoria de dependências:
 
 ```bash
 npm run audit
 ```
 
-O workflow `.github/workflows/ci.yml` executa instalação das dependências, auditoria npm, build, lint, testes unitários e testes de fuzzing em pushes e pull requests para `main`.
+O workflow `.github/workflows/ci.yml` executa instalação das dependências, auditoria npm, build, lint, testes unitários, testes de fuzzing e cobertura em pushes e pull requests para `main`.
 
 O workflow `.github/workflows/codeql.yml` executa análise estática de segurança com CodeQL em pushes, pull requests e semanalmente.
 
