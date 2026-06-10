@@ -99,6 +99,20 @@ Para remover também os dados persistidos no volume local:
 docker compose down -v
 ```
 
+## Imagem de Produção
+
+Build da imagem de produção do servidor Node:
+
+```bash
+docker build -f Dockerfile.prod -t gces-projeto-individual:prod .
+```
+
+Execução da imagem de produção:
+
+```bash
+docker run --rm -p 55555:55555 gces-projeto-individual:prod
+```
+
 ## Qualidade e CI
 
 Rodar validação de build local:
@@ -157,5 +171,6 @@ A análise de qualidade e cobertura do SonarCloud usa `sonar-project.properties`
 
 - As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.
 - A persistência em Postgres registra eventos de criação, entrada e encerramento de partidas.
+- A imagem de produção do servidor usa build multi-stage com base Alpine.
 - Não há manifestos de infraestrutura neste ponto inicial.
 - Os commits das fases devem ser atômicos e espaçados no tempo.
