@@ -25,8 +25,9 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Workflow de deploy continuo adicionado para aplicar os manifests Kubernetes com as imagens publicadas.
 - Ingress com TLS gerenciado pelo cert-manager adicionado aos manifests Kubernetes.
 - Exposicao de portas restringida com servicos internos `ClusterIP` e `NetworkPolicies`.
+- Relatorio final consolidado em `docs/RELATORIO_FINAL.md`.
 
-## Fases futuras sugeridas
+## Fases implementadas
 
 1. Containerização de desenvolvimento com hot reload.
 2. Docker Compose com aplicação e Postgres.
@@ -38,6 +39,8 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 8. SonarCloud com métricas e cobertura.
 9. Containerização de produção com Nginx.
 10. Kubernetes, CD, HTTPS e restrições de rede.
+
+As fases obrigatorias foram cobertas. As proximas atividades sao revisoes finais de entrega e configuracoes externas no GitHub/cluster.
 
 ## Pontos técnicos mapeados
 

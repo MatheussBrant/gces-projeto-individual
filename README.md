@@ -246,6 +246,8 @@ Detalhes das verificações de segurança estão em `docs/SEGURANCA.md`.
 
 A análise de qualidade e cobertura do SonarCloud usa `sonar-project.properties` e requer o secret `SONAR_TOKEN` configurado no GitHub.
 
+O mapeamento final dos requisitos e evidencias do projeto esta em `docs/RELATORIO_FINAL.md`.
+
 ## Observações para os próximos commits
 
 - As dependências do servidor foram modernizadas para versões atuais de Express, Socket.IO e pg.
