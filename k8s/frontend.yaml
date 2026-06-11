@@ -37,7 +37,7 @@ metadata:
   name: frontend
   namespace: gces-projeto-individual
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: http
       port: 80

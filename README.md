@@ -182,6 +182,16 @@ Pre-requisitos no cluster:
 
 O emissor atual usa certificado self-signed para manter o ambiente reproduzivel. Para publicacao real, ajuste o host em `k8s/ingress.yaml` e troque o emissor em `k8s/cert-manager.yaml` por um emissor ACME.
 
+## Restricao de Portas
+
+Em Kubernetes, os servicos da aplicacao usam `ClusterIP` e o acesso externo fica concentrado no Ingress.
+
+As politicas de rede em `k8s/network-policy.yaml` liberam somente:
+
+- Ingress Controller para frontend na porta `80`.
+- Frontend para backend na porta `55555`.
+- Backend para Postgres na porta `5432`.
+
 ## Qualidade e CI
 
 Rodar validação de build local:

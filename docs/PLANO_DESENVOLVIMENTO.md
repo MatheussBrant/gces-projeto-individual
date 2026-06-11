@@ -24,6 +24,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Workflow de publicação de imagens Docker adicionado para GHCR.
 - Workflow de deploy continuo adicionado para aplicar os manifests Kubernetes com as imagens publicadas.
 - Ingress com TLS gerenciado pelo cert-manager adicionado aos manifests Kubernetes.
+- Exposicao de portas restringida com servicos internos `ClusterIP` e `NetworkPolicies`.
 
 ## Fases futuras sugeridas
 

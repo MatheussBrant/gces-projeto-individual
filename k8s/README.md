@@ -45,3 +45,15 @@ Pre-requisitos do cluster:
 O certificado TLS e gerado pelo cert-manager com o `Issuer` self-signed `mkjs-selfsigned`, gravando o certificado no secret `frontend-tls`.
 
 Para um ambiente publico, troque o host em `k8s/ingress.yaml` e substitua o `Issuer` self-signed por um emissor ACME, como Let's Encrypt.
+
+## Restricao de portas
+
+Os servicos `frontend`, `backend` e `postgres` usam `ClusterIP`. O unico ponto de entrada externo esperado e o Ingress.
+
+As `NetworkPolicies` aplicam bloqueio padrao de entrada e liberam apenas:
+
+- NGINX Ingress Controller no namespace `ingress-nginx` para o frontend na porta `80`.
+- Frontend para backend na porta `55555`.
+- Backend para Postgres na porta `5432`.
+
+O cluster precisa usar um CNI com suporte a `NetworkPolicy` para essas regras serem aplicadas.

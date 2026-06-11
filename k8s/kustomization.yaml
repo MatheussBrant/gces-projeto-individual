@@ -9,3 +9,4 @@ resources:
   - frontend.yaml
   - cert-manager.yaml
   - ingress.yaml
+  - network-policy.yaml
