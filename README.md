@@ -171,6 +171,17 @@ base64 -w 0 ~/.kube/config
 
 O deploy automatico usa as imagens `sha-<commit>` publicadas no GHCR. O workflow tambem pode ser executado manualmente informando outra tag, como `latest`.
 
+## Ingress com TLS
+
+Os manifests Kubernetes incluem um `Ingress` para `gces-projeto-individual.local` com TLS gerenciado pelo cert-manager.
+
+Pre-requisitos no cluster:
+
+- NGINX Ingress Controller.
+- cert-manager.
+
+O emissor atual usa certificado self-signed para manter o ambiente reproduzivel. Para publicacao real, ajuste o host em `k8s/ingress.yaml` e troque o emissor em `k8s/cert-manager.yaml` por um emissor ACME.
+
 ## Qualidade e CI
 
 Rodar validação de build local:

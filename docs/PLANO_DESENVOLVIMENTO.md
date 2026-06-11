@@ -23,6 +23,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Manifests Kubernetes adicionados para frontend, backend e Postgres.
 - Workflow de publicação de imagens Docker adicionado para GHCR.
 - Workflow de deploy continuo adicionado para aplicar os manifests Kubernetes com as imagens publicadas.
+- Ingress com TLS gerenciado pelo cert-manager adicionado aos manifests Kubernetes.
 
 ## Fases futuras sugeridas
 

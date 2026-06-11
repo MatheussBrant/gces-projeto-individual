@@ -32,3 +32,16 @@ base64 -w 0 ~/.kube/config
 ```
 
 O deploy automatico usa as tags `sha-<commit>` publicadas no GHCR. A execucao manual do workflow permite informar outra tag, como `latest`.
+
+## Ingress e TLS
+
+Os manifests incluem um `Ingress` para o host `gces-projeto-individual.local` usando a classe `nginx`.
+
+Pre-requisitos do cluster:
+
+- NGINX Ingress Controller instalado.
+- cert-manager instalado.
+
+O certificado TLS e gerado pelo cert-manager com o `Issuer` self-signed `mkjs-selfsigned`, gravando o certificado no secret `frontend-tls`.
+
+Para um ambiente publico, troque o host em `k8s/ingress.yaml` e substitua o `Issuer` self-signed por um emissor ACME, como Let's Encrypt.
