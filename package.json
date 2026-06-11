@@ -8,7 +8,7 @@
     "audit:root": "npm audit --audit-level=high",
     "audit:server": "npm audit --prefix server --audit-level=high",
     "build": "node --check server/server.js && node --check server/games.js && node --check server/db.js",
-    "coverage": "c8 --all --include \"server/**/*.js\" --exclude \"test/**\" --reporter=text --reporter=lcov npm test",
+    "coverage": "c8 --all --include \"server/**/*.js\" --exclude \"test/**\" --reporter=text --reporter=lcov --check-coverage --lines 40 --statements 40 --branches 80 --functions 58 npm test",
     "dev": "npm --prefix server run dev",
     "lint": "eslint \"server/**/*.js\" \"game/src/**/*.js\"",
     "lint:game": "eslint \"game/src/**/*.js\"",
