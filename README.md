@@ -159,6 +159,18 @@ latest
 sha-<commit>
 ```
 
+## Deploy Continuo
+
+O workflow `.github/workflows/deploy.yml` aplica os manifests Kubernetes depois que o workflow de publicacao de imagens termina com sucesso na branch `main`.
+
+Para habilitar o deploy no GitHub Actions, configure o secret `KUBE_CONFIG_B64` com o kubeconfig do cluster codificado em base64:
+
+```bash
+base64 -w 0 ~/.kube/config
+```
+
+O deploy automatico usa as imagens `sha-<commit>` publicadas no GHCR. O workflow tambem pode ser executado manualmente informando outra tag, como `latest`.
+
 ## Qualidade e CI
 
 Rodar validação de build local:

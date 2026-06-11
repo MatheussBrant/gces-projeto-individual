@@ -1,0 +1,68 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows:
+      - Docker Publish
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: Tag das imagens Docker a aplicar
+        required: false
+        default: latest
+
+permissions:
+  contents: read
+
+env:
+  BACKEND_IMAGE: ghcr.io/matheussbrant/gces-projeto-individual-api
+  FRONTEND_IMAGE: ghcr.io/matheussbrant/gces-projeto-individual-web
+  K8S_NAMESPACE: gces-projeto-individual
+
+jobs:
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
+
+      - name: Resolve image tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            echo "IMAGE_TAG=sha-${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_ENV"
+          else
+            echo "IMAGE_TAG=${{ inputs.image_tag }}" >> "$GITHUB_ENV"
+          fi
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Configure kubeconfig
+        env:
+          KUBE_CONFIG_B64: ${{ secrets.KUBE_CONFIG_B64 }}
+        run: |
+          mkdir -p "$HOME/.kube"
+          echo "$KUBE_CONFIG_B64" | base64 -d > "$HOME/.kube/config"
+          chmod 600 "$HOME/.kube/config"
+
+      - name: Apply Kubernetes manifests
+        run: kubectl apply -k k8s
+
+      - name: Deploy published images
+        run: |
+          kubectl -n "$K8S_NAMESPACE" set image deployment/backend backend="$BACKEND_IMAGE:$IMAGE_TAG"
+          kubectl -n "$K8S_NAMESPACE" set image deployment/frontend frontend="$FRONTEND_IMAGE:$IMAGE_TAG"
+
+      - name: Wait for rollout
+        run: |
+          kubectl -n "$K8S_NAMESPACE" rollout status deployment/backend --timeout=180s
+          kubectl -n "$K8S_NAMESPACE" rollout status deployment/frontend --timeout=180s

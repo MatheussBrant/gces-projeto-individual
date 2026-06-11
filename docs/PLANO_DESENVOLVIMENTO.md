@@ -22,6 +22,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Imagem Nginx adicionada para servir arquivos estáticos do frontend em produção.
 - Manifests Kubernetes adicionados para frontend, backend e Postgres.
 - Workflow de publicação de imagens Docker adicionado para GHCR.
+- Workflow de deploy continuo adicionado para aplicar os manifests Kubernetes com as imagens publicadas.
 
 ## Fases futuras sugeridas
 
