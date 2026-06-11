@@ -21,6 +21,7 @@ Este repositório recebeu apenas a configuração inicial para evoluir o projeto
 - Dockerfile de produção multi-stage com base Alpine adicionado para o servidor Node.
 - Imagem Nginx adicionada para servir arquivos estáticos do frontend em produção.
 - Manifests Kubernetes adicionados para frontend, backend e Postgres.
+- Workflow de publicação de imagens Docker adicionado para GHCR.
 
 ## Fases futuras sugeridas
 

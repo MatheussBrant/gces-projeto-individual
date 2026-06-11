@@ -141,6 +141,24 @@ kubectl delete -k k8s
 
 Os manifests esperam imagens publicadas no GHCR. A publicação das imagens será configurada no pipeline em etapa própria.
 
+## Publicação de Imagens
+
+O workflow `.github/workflows/docker-publish.yml` publica as imagens de produção no GHCR quando houver push para `main` ou execução manual.
+
+Imagens publicadas:
+
+```text
+ghcr.io/matheussbrant/gces-projeto-individual-api
+ghcr.io/matheussbrant/gces-projeto-individual-web
+```
+
+Tags publicadas:
+
+```text
+latest
+sha-<commit>
+```
+
 ## Qualidade e CI
 
 Rodar validação de build local:
